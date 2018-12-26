@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <title>Usuarios</title>
+</head>
+
+<body>
+
+    <h2>Usuarios
+        <a href="/users/new">
+            <button id="nuevo" class="boton">Registrarse</button>
+        </a>
+    </h2>
+    <h3>
+        <table>
+            <tr>
+
+                <th> <input class="buscar" id="buscar " type="text" placeholder="escriba acá lo que quiera buscar ">
+                </th>
+                <th>
+                    <button id="btnBusqueda" class="btnBusqueda"> Búsqueda
+                    </button>
+                </th>
+            </tr>
+        </table>
+
+    </h3>
+    <div class="infoUsuario usuarios">
+        <table id="tabla">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Editar</th>
+                <th>Borrar</th>
+            </tr>
+        </table>
+    </div>
+    <div class="infoUsuario">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>

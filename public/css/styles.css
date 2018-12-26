@@ -1,0 +1,86 @@
+body {
+  background-image: url(../images/colores.jpg);
+  background-size: 100%;
+  font-family: "Quicksand", sans-serif;
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  font-size: 35px;
+  font-family: "Lobster", cursive;
+  margin: 0;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+}
+h3 tr th {
+  background-color: rgba(233, 23, 146, 0.8);
+}
+h3 .buscar {
+  width: 300px;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Quicksand", sans-serif;
+}
+h3 .btnBusqueda {
+  background-color: #1eeda4;
+  border: solid 1px turquoise;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 5px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 15px;
+}
+
+.ocultar {
+  display: none;
+}
+
+.infoUsuario {
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  border-radius: 20px;
+}
+
+tr th {
+  border: solid orange 1px;
+  border-radius: 2px;
+  padding: 10px;
+  background-color: rgba(30, 237, 164, 0.8);
+}
+
+td {
+  border: solid orange 1px;
+  border-radius: 2px;
+  padding: 10px;
+  background-color: rgba(30, 237, 164, 0.8);
+}
+
+a {
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+.boton {
+  background-color: rgba(43, 255, 0, 0.7);
+  padding: 5px 15px;
+  border: solid 1px greenyellow;
+  border-radius: 10px;
+  margin: 30px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 25px;
+  color: white;
+}
+
+.infoUsuario a {
+  color: black;
+}
+
+/*# sourceMappingURL=styles.css.map */
