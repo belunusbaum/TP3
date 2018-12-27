@@ -35,6 +35,24 @@ h3 {
             // color: white
         }
 }
+
+
+.modal {
+    width: 600px;
+    height: 200px;
+	position: relative;
+	margin: -15% 25%;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff,rgb(209, 30, 155));
+	background: -webkit-linear-gradient(#fff, rgb(209, 30, 155));
+	background: -o-linear-gradient(#fff, rgb(209, 30, 155));
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+} 
+
 .ocultar {
     display: none;
 }

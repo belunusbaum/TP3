@@ -131,7 +131,7 @@ router.put('/api/users/:id', function (req, res, next) {
   res.json(users)
 })
 
-router.get('/users', function (req, res, next) {
+router.get('/api/users', function (req, res, next) {
   let users = fs.readFileSync('users.json');
   users = JSON.parse(users);
 
