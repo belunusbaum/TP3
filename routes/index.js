@@ -151,36 +151,25 @@ router.put('/api/users/:id', function (req, res, next) {
   res.json(users)
 })
 
-// router.get('/api/users', function (req, res, next) {
-//   // let users = fs.readFileSync('users.json');
-//   // users = JSON.parse(users);
+router.get('/api/users', function (req, res, next) {
+  // let users = fs.readFileSync('users.json');
+  // users = JSON.parse(users);
 
-//   const buscar = req.query.search;
+  let buscar = req.query.search;
 
-//   if (buscar && buscar.length < 0) {
-//     let usuarioFiltrado = users.filter(function(usuario) {
-//  return usuario.nombre.toLowerCase().indexOf(buscar.toLowerCase()) >= 0 ||
-//       usuario.apellido.toLowerCase().indexOf(buscar.toLowerCase()) >= 0 ||
-//       usuario.telefono.indexOf(search) >= 0 ||
-//       usuario.email.toLowerCase().indexOf(search.toLowerCase()) >= 0;
-//     })
+  if (buscar && buscar.length < 0) {
+    let usuarioFiltrado = users.filter(function(usuario) {
+ return usuario.nombre.toLowerCase().indexOf(buscar.toLowerCase()) >= 0 ||
+      usuario.apellido.toLowerCase().indexOf(buscar.toLowerCase()) >= 0 ||
+      usuario.telefono.indexOf(search) >= 0 ||
+      usuario.email.toLowerCase().indexOf(search.toLowerCase()) >= 0;
+    })
     
-//  res.json(usuarioFiltrado);
-//  return;
-//  }res.json(users)
-// });
+ res.json(usuarioFiltrado);
+ return;
+ }res.json(users)
+});
 
-// router.get('/api/users', function(req, res, next) {
-//  let search = req.query.search;
-
-//  if(search && search.length > 0){
-//  let usuariosFiltrados = ArchivoEnJson.filter(function(u){
-
-//     return u.nombre.toLowerCase().indexOf(search.toLowerCase()) >=0 ||
-//        u.apellido.toLowerCase().indexOf(search.toLowerCase()) >= 0||
-//       u.telefono.indexOf(search) >= 0||
-//       u.email.toLowerCase().indexOf(search.toLowerCase()) >=0;
-//     });
 
 
 module.exports = router;

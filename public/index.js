@@ -35,22 +35,22 @@ function eliminar(id) {
     })
 }
 
-// const buscar = req.query.search;
-// $('#btnBusqueda').on('click', function () {
-//     const inputBusqueda = $('#buscar').val();
-//     $.ajax('http://localhost:3000/api/users?search=' + inputBusqueda)
-//         .done(function (data) {
-//             console.log(data);
-//             for (let i = 0; i < data.length; i++) {
-//                 $('#tabla').append(`
-//             <tr data-id=${data[i].id}>
-//                 <td>${data[i].nombre}</td>
-//                 <td>${data[i].apellido}</td>
-//                 <td>${data[i].telefono}</td>
-//                 <td>${data[i].email}</td>
-//             </tr>(
+$('#btnBusqueda').on('click', function () {
+    const inputBusqueda = $('#buscar').val();
+    $.ajax('http://localhost:3000/api/users?search=' + inputBusqueda)
+        .done(function (data) {
+            console.log(data);
+                $('#tabla td').remove();
+            for (let i = 0; i < data.length; i++) {
+                $('#tabla').append(`
+            <tr data-id=${data[i].id}>
+                <td>${data[i].nombre}</td>
+                <td>${data[i].apellido}</td>
+                <td>${data[i].telefono}</td>
+                <td>${data[i].email}</td>
+            </tr>(
 
-//             `)
-//             }
-//         })
-// })
+            `)
+            }
+        })
+})
