@@ -75,10 +75,7 @@ router.post('/api/users', function (req, res, next) {
   const apellido = user.apellido
   const telefono = user.telefono
   const email = user.email
-  // const nombre = $('#nombre').val();
-  // const apellido = $('#apellido').val();
-  // const telefono = $('#telefono').val();
-  // const email = $('#email').val();
+
   const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
   if (nombre == null || nombre.length == 0) {
     return res.status(400).end("error")

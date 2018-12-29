@@ -15,7 +15,7 @@ $.ajax('http://localhost:3000/api/users')
                     </a>
                 </td>
                     <td>
-                    <button onclick="eliminar(${data[i].id})" class="btn" id="borrar">
+                    <button type="button" onclick="eliminar(${data[i].id})" class="btn" id="borrar">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </td>
