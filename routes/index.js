@@ -34,46 +34,6 @@ router.get('/ping', function (req, res, next) {
 
 
 
-router.post('/api/users', function (req, res, next) {
-  res.sendFile(path.join(__dirname, '..', 'public', 'nuevo.html'))
-  let users = fs.readFileSync('users.json');
-  users = JSON.parse(users);
-  const user = req.body
-  const nombre = user.nombre
-  const apellido = user.apellido
-  const telefono = user.telefono
-  const email = user.email
-  const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-  if (nombre == null || nombre.length == 0) {
-    return false;
-  } else if (!/^\s+$/.test(nombre)) {
-    return false
-  } else if (nombre.length > 30) {
-    return false
-  }
-  else if (apellido == null || apellido.length == 0 || apellido.length > 30 || (!/^\s+$/.test(apellido))) {
-    return false
-  }
-  else if (telefono == null || telefono == 0) {
-    return false;
-  }
-  else if (emailRegex.test(email)) {
-    console.log("hola")
-  } else {
-    return false
-  }
-
-
-  const lastId = users[users.length - 1].id
-  user.id = lastId + 1
-  console.log(user)
-  users.push(user)
-
-  fs.writeFileSync('users.json', JSON.stringify(users))
-  res.json(users)
-
-
-});
 
 
 
@@ -105,7 +65,67 @@ router.get('/api/users/:id', function (req, res, next) {
   }
 })
 
-// put de eze
+
+router.post('/api/users', function (req, res, next) {
+  res.sendFile(path.join(__dirname, '..', 'public', 'nuevo.html'))
+  let users = fs.readFileSync('users.json');
+  users = JSON.parse(users);
+  const user = req.body
+  const nombre = user.nombre
+  const apellido = user.apellido
+  const telefono = user.telefono
+  const email = user.email
+  // const nombre = $('#nombre').val();
+  // const apellido = $('#apellido').val();
+  // const telefono = $('#telefono').val();
+  // const email = $('#email').val();
+  const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  if (nombre == null || nombre.length == 0) {
+    return res.status(400).end("error")
+
+  } else if (nombre.length > 30) {
+    return res.status(402).end("error")
+
+  } else if (!/^[a-zA-Z]*$/.test(nombre)) {
+    return res.status(403).end("error")
+    }
+
+  if (apellido == null || apellido.length == 0) {
+    return res.status(404).end("error")
+  }
+  
+  if (apellido.length > 30) {
+    return res.status(405).end("error")
+  } 
+  
+  if (!/^[a-zA-Z]*$/.test(apellido)) {
+    return res.status(406).end("error")
+  }
+  
+  if (telefono == null || telefono == 0) {
+    return res.status(407).end("error")
+  } 
+  
+  if (email == null || email == 0) {
+    return res.status(408).end("error")
+  }
+
+  if (!emailRegex.test(email)) {
+    return res.status(409).end("error")
+  }
+
+  const lastId = users[users.length - 1].id
+  user.id = lastId + 1
+  console.log(user)
+  users.push(user)
+
+  fs.writeFileSync('users.json', JSON.stringify(users))
+  res.json(users)
+
+
+});
+
+
 router.put('/api/users/:id', function (req, res, next) {
   // sacamos el id de los params
   let users = fs.readFileSync('users.json');
@@ -131,29 +151,36 @@ router.put('/api/users/:id', function (req, res, next) {
   res.json(users)
 })
 
-router.get('/api/users', function (req, res, next) {
-  let users = fs.readFileSync('users.json');
-  users = JSON.parse(users);
+// router.get('/api/users', function (req, res, next) {
+//   // let users = fs.readFileSync('users.json');
+//   // users = JSON.parse(users);
 
-  const buscar = req.query.search;
+//   const buscar = req.query.search;
 
-  if (buscar && buscar.length < 0) {
-    let userFiltrados = []
-    for (var i = 0; i < users.length; i++) {
-      if (users[i].nombre.indexOf(buscar) > 0 ||
-        users[i].apellido.indexOf(buscar) > 0 ||
-        users[i].telefono.indexOf(buscar) > 0 ||
-        users[i].email.indexOf(buscar) > 0) {
-        users[i].push(users[i])
+//   if (buscar && buscar.length < 0) {
+//     let usuarioFiltrado = users.filter(function(usuario) {
+//  return usuario.nombre.toLowerCase().indexOf(buscar.toLowerCase()) >= 0 ||
+//       usuario.apellido.toLowerCase().indexOf(buscar.toLowerCase()) >= 0 ||
+//       usuario.telefono.indexOf(search) >= 0 ||
+//       usuario.email.toLowerCase().indexOf(search.toLowerCase()) >= 0;
+//     })
+    
+//  res.json(usuarioFiltrado);
+//  return;
+//  }res.json(users)
+// });
 
-      }
-    }
-    res.json(userFiltrados);
-    return
-  }
+// router.get('/api/users', function(req, res, next) {
+//  let search = req.query.search;
 
-  res.json(users)
-})
+//  if(search && search.length > 0){
+//  let usuariosFiltrados = ArchivoEnJson.filter(function(u){
+
+//     return u.nombre.toLowerCase().indexOf(search.toLowerCase()) >=0 ||
+//        u.apellido.toLowerCase().indexOf(search.toLowerCase()) >= 0||
+//       u.telefono.indexOf(search) >= 0||
+//       u.email.toLowerCase().indexOf(search.toLowerCase()) >=0;
+//     });
 
 
 module.exports = router;

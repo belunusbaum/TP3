@@ -35,28 +35,22 @@ function eliminar(id) {
     })
 }
 
-// const busqueda = $()
+// const buscar = req.query.search;
+// $('#btnBusqueda').on('click', function () {
+//     const inputBusqueda = $('#buscar').val();
+//     $.ajax('http://localhost:3000/api/users?search=' + inputBusqueda)
+//         .done(function (data) {
+//             console.log(data);
+//             for (let i = 0; i < data.length; i++) {
+//                 $('#tabla').append(`
+//             <tr data-id=${data[i].id}>
+//                 <td>${data[i].nombre}</td>
+//                 <td>${data[i].apellido}</td>
+//                 <td>${data[i].telefono}</td>
+//                 <td>${data[i].email}</td>
+//             </tr>(
 
-const buscar = req.query.search;
-$('#btnBusqueda').on('click', function () {
-    $.ajax('http://localhost:3000/api/users/' + user, {
-
-        success: function () {
-            if (buscar && buscar.length > 0) {
-                let userFiltrados = [];
-                for (var i = 0; i < user.length; i++) {
-                    if (users[i].nombre.indexOf(buscar) > 0 ||
-                        users[i].apellido.indexOf(buscar) > 0 ||
-                        users[i].telefono.indexOf(buscar) > 0 ||
-                        users[i].email.indexOf(buscar) > 0) {
-                        users[i].push(user[i])
-
-                    }
-                }
-                res.json(userFiltrados);
-
-            }
-
-        }
-    })
-})
+//             `)
+//             }
+//         })
+// })
