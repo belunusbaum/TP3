@@ -5,6 +5,7 @@ $('#nuevo').on('click', function () {
   const telefono = $('#telefono').val();
   const email = $('#email').val();
   const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
   if (nombre == null || nombre.length == 0) {
     $('#nombreOblig').removeClass("ocultar")
     setTimeout(function () {
@@ -23,7 +24,7 @@ $('#nuevo').on('click', function () {
       $('#nombreEsp').addClass("ocultar");
     }, 2000)
     return false
-    }
+  }
 
   if (apellido == null || apellido.length == 0) {
     $('#apellidoOblig').removeClass("ocultar")
@@ -31,14 +32,14 @@ $('#nuevo').on('click', function () {
       $('#apellidoOblig').addClass("ocultar");
     }, 2000)
   }
-  
+
   if (apellido.length > 30) {
     $('#apellidoCarac').removeClass("ocultar")
     setTimeout(function () {
       $('#apellidoCarac').addClass("ocultar");
     }, 2000)
-  } 
-  
+  }
+
   if (!/^[a-zA-Z]*$/.test(apellido)) {
     $('#apellidoEsp').removeClass("ocultar");
     setTimeout(function () {
@@ -46,14 +47,14 @@ $('#nuevo').on('click', function () {
     }, 2000)
     return false;
   }
-  
+
   if (telefono == null || telefono == 0) {
     $('#numeroOblig').removeClass('ocultar');
     setTimeout(function () {
       $('#numeroOblig').addClass("ocultar");
     }, 2000)
-  } 
-  
+  }
+
   if (email == null || email == 0) {
     $('#mailOblig').removeClass("ocultar");
     setTimeout(function () {

@@ -9,10 +9,11 @@ users = JSON.parse(users);
 // fs.writeFileSync('users.json', JSON.stringify(users))
 
 
-router.get('/api/users', function (req, res, next) {
-
-  res.json(users)
-})
+// router.get('/api/users', function (req, res, next) {
+//   // let users = fs.readFileSync('users.json');
+//   // users = JSON.parse(users);
+//   // res.json(users)
+// })
 
 router.get('/users', function (req, res, next) {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
@@ -58,10 +59,10 @@ router.get('/api/users/:id', function (req, res, next) {
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].id == id) {
-      res.json(users[i])
+     return res.json(users[i])
     }
-    fs.writeFileSync('users.json', JSON.stringify(users))
-    res.json(users)
+    // fs.writeFileSync('users.json', JSON.stringify(users))
+    // res.json(users)
   }
 })
 
@@ -71,6 +72,14 @@ router.post('/api/users', function (req, res, next) {
   let users = fs.readFileSync('users.json');
   users = JSON.parse(users);
   const user = req.body
+  
+  if (users.length == 0) {
+    user.id = 1
+  } else {
+    const lastId = users[users.length - 1].id
+    user.id = lastId + 1
+  }
+ 
   const nombre = user.nombre
   const apellido = user.apellido
   const telefono = user.telefono
@@ -110,11 +119,10 @@ router.post('/api/users', function (req, res, next) {
   if (!emailRegex.test(email)) {
     return res.status(409).end("error")
   }
-
-  const lastId = users[users.length - 1].id
-  user.id = lastId + 1
+ 
   console.log(user)
   users.push(user)
+
 
   fs.writeFileSync('users.json', JSON.stringify(users))
   res.json(users)
@@ -149,17 +157,17 @@ router.put('/api/users/:id', function (req, res, next) {
 })
 
 router.get('/api/users', function (req, res, next) {
-  // let users = fs.readFileSync('users.json');
-  // users = JSON.parse(users);
+  let users = fs.readFileSync('users.json');
+  users = JSON.parse(users);
 
   let buscar = req.query.search;
 
-  if (buscar && buscar.length < 0) {
+  if (buscar && buscar.length > 0) {
     let usuarioFiltrado = users.filter(function(usuario) {
  return usuario.nombre.toLowerCase().indexOf(buscar.toLowerCase()) >= 0 ||
       usuario.apellido.toLowerCase().indexOf(buscar.toLowerCase()) >= 0 ||
-      usuario.telefono.indexOf(search) >= 0 ||
-      usuario.email.toLowerCase().indexOf(search.toLowerCase()) >= 0;
+      usuario.telefono.indexOf(buscar) >= 0 ||
+      usuario.email.toLowerCase().indexOf(buscar.toLowerCase()) >= 0;
     })
     
  res.json(usuarioFiltrado);

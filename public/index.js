@@ -36,7 +36,7 @@ function eliminar(id) {
 }
 
 $('#btnBusqueda').on('click', function () {
-    const inputBusqueda = $('#buscar').val();
+    const inputBusqueda = $('#inputBusqueda').val();
     $.ajax('http://localhost:3000/api/users?search=' + inputBusqueda)
         .done(function (data) {
             console.log(data);
@@ -48,6 +48,18 @@ $('#btnBusqueda').on('click', function () {
                 <td>${data[i].apellido}</td>
                 <td>${data[i].telefono}</td>
                 <td>${data[i].email}</td>
+
+                <td>
+                    <a href="/users/editar?id=${data[i].id}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                    <td>
+                    <button type="button" onclick="eliminar(${data[i].id})" class="btn" id="borrar">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+                
             </tr>(
 
             `)
