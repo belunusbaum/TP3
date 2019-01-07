@@ -25,12 +25,15 @@ $.ajax('http://localhost:3000/api/users')
         }
     });
 
+
 function eliminar(id) {
+
     $.ajax('http://localhost:3000/api/users/' + id, {
+
         method: 'DELETE',
         success: function () {
             $('#data-id' + id).remove();
-            location.href = '/users'
+            $('#modalELiminar').removeClass("ocultar")
         }
     })
 }
@@ -40,15 +43,14 @@ $('#btnBusqueda').on('click', function () {
     $.ajax('http://localhost:3000/api/users?search=' + inputBusqueda)
         .done(function (data) {
             console.log(data);
-                $('#tabla td').remove();
+            $('.infoUsuario').remove();
             for (let i = 0; i < data.length; i++) {
-                $('#tabla').append(`
-            <tr data-id=${data[i].id}>
+                $('table').append(`
+            <tr >
                 <td>${data[i].nombre}</td>
                 <td>${data[i].apellido}</td>
                 <td>${data[i].telefono}</td>
                 <td>${data[i].email}</td>
-
                 <td>
                     <a href="/users/editar?id=${data[i].id}">
                         <i class="fas fa-edit"></i>
@@ -61,7 +63,6 @@ $('#btnBusqueda').on('click', function () {
                 </td>
                 
             </tr>(
-
             `)
             }
         })

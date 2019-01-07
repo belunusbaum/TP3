@@ -46,10 +46,27 @@ h3 .btnBusqueda {
   border-radius: 10px;
   background: #fff;
   background: -webkit-linear-gradient(#fff, #353536);
+}
+.modal .editado {
+  margin-top: 40px;
+  font-size: 35px;
+  font-family: "Lobster", cursive;
+}
+
+.modalEliminar {
+  text-align: center;
+  width: 700px;
+  height: 200px;
+  position: relative;
+  margin: -18% 22%;
+  padding: 5px 20px 13px 20px;
+  border-radius: 10px;
+  background: #fff;
+  background: -webkit-linear-gradient(#fff, #353536);
   background: -o-linear-gradient(#fff, #353536);
   transition: opacity 400ms ease-in;
 }
-.modal .editado {
+.modalEliminar .eliminado {
   margin-top: 40px;
   font-size: 35px;
   font-family: "Lobster", cursive;

@@ -25,10 +25,27 @@
                 <th>Email</th>
             </tr>
             <tr>
-                <td><input id="nombre" type="text"></td>
-                <td><input id="apellido" type="text"></td>
-                <td><input id="telefono" type="number"></td>
-                <td><input id="email" type="text"></td>
+                <td><input id="nombre" type="text">
+                    <p class="ocultar nombreOblig">El campo es obligatorio</p>
+                    <p class="ocultar nombreCarac"> Ups.. no puede tener más de 30 carácteres </p>
+                    <p class="ocultar nombreEsp">Chequee que no tenga carácteres especiales </p>
+                </td>
+
+                <td><input id="apellido" type="text">
+                    <p class="ocultar pellidoOblig">El campo es obligatorio</p>
+                    <p class="ocultar apellidoCarac"> No puede tener mas de 30 carácteres </p>
+                    <p class="ocultar apellidoEsp">Chequee que no tenga carácteres especiales </p>
+                </td>
+
+                <td><input id="telefono" type="number">
+                    <p class="ocultar numeroOblig">El campo es obligatorio</p>
+                </td>
+
+                <td><input id="email" type="text">
+                    <p class="ocultar mailOblig">El campo es obligatorio</p>
+                    <p class="ocultar mailCarac">El mail es inválido</p>
+                </td>
+
             </tr>
         </table>
     </div>
@@ -37,7 +54,7 @@
             EDITAR
         </button>
     </div>
-    
+
     <div id="modal" class="modal ocultar">
 
         <div class="editado">Has editado un usuario </div>

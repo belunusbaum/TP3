@@ -8,9 +8,7 @@ $('#nuevo').on('click', function () {
 
   if (nombre == null || nombre.length == 0) {
     $('#nombreOblig').removeClass("ocultar")
-    setTimeout(function () {
-      $('#nombreOblig').addClass("ocultar");
-    }, 2000)
+
 
   } else if (nombre.length > 30) {
     $('#nombreCarac').removeClass("ocultar");
